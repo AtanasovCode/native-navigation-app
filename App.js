@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './routes/HomeScreen';
-import AboutScreen from './routes/AboutScreen';
+import Categories from './routes/Categories';
 import ScrollScreen from './routes/ScrollScreen';
 
 const Stack = createNativeStackNavigator();
@@ -19,8 +19,8 @@ const App = () => {
         />
         <Stack.Screen 
           name="About" 
-          component={AboutScreen} 
-          options={{title: 'About'}}
+          component={Categories} 
+          options={{title: 'Bike Categories'}}
         />
         <Stack.Screen 
           name="Scroll"

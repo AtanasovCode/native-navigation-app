@@ -1,23 +1,29 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 
-const HomeScreen = ({navigation}) => {
+const image = { uri: 'https://images.unsplash.com/photo-1610569982425-c5ab6a017ab2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
+
+const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Homescreen</Text>
-            <TouchableOpacity 
-                style={styles.button}
-                onPress={() => navigation.navigate("About")}
-            >
-                <Text style={styles.buttonText}>About Page</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-                style={styles.button}
-                onPress={() => navigation.navigate("Scroll")}
-            >
-                <Text style={styles.buttonText}>Scroll Page</Text>
-            </TouchableOpacity>
+            <ImageBackground source={image} style={styles.image}>
+                <View style={{width: "60%"}}>
+                    <Text style={styles.heading}>E-bike World</Text>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => navigation.navigate("About")}
+                    >
+                        <Text style={styles.buttonText}>E-Bike Categories</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => navigation.navigate("Scroll")}
+                    >
+                        <Text style={styles.buttonText}>Scroll Page</Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
         </View>
     );
 }
@@ -30,21 +36,30 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    image: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: "center",
+        width: "100%",
+        paddingTop: 16,
+    },
     heading: {
-        color: "#FFF",
+        color: "#000",
         fontSize: 32,
         fontWeight: "bold",
         marginBottom: 12,
     },
     button: {
-        color: "#11022f",
-        backgroundColor: "#29d8ff",
+        backgroundColor: "#03073a",
         padding: 12,
         marginBottom: 15,
+        alignItems: "center",
+        justifyContent: "Center",
     },
     buttonText: {
         fontSize: 17,
         fontWeight: "bold",
+        color: "#fff",
     },
 })
 
