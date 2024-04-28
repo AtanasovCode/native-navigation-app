@@ -12,7 +12,7 @@ const HomeScreen = ({ navigation }) => {
                     <Text style={styles.heading}>E-bike World</Text>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => navigation.navigate("About")}
+                        onPress={() => navigation.navigate("Categories")}
                     >
                         <Text style={styles.buttonText}>E-Bike Categories</Text>
                     </TouchableOpacity>

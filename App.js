@@ -18,7 +18,7 @@ const App = () => {
           options={{ title: 'Home' }}
         />
         <Stack.Screen 
-          name="About" 
+          name="Categories" 
           component={Categories} 
           options={{title: 'Bike Categories'}}
         />

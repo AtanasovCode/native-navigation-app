@@ -1,89 +1,80 @@
-import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { ScrollView, Text, View, TouchableOpacity, ImageBackground, FlatList } from "react-native";
 import { Dimensions, StyleSheet } from "react-native";
 
-const mopedStyle = { url: "https://images.unsplash.com/photo-1630561222593-35652acc3905?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" };
-const fatTyre = { url: "https://images.unsplash.com/photo-1631068136386-fa145d502a70?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZWxlY3RyaWMlMjBiaWtlc3xlbnwwfDF8MHx8fDI%3D" };
-const foldingStyle = { url: "https://images.unsplash.com/photo-1590273018519-ba2db69e124c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWxlY3RyaWMlMjBiaWtlcyUyMGZvbGRpbmd8ZW58MHwxfDB8fHwy" };
-const mtbStyle = { url: "https://images.unsplash.com/photo-1668106249278-cba50127e361?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwxfDB8fHwy" };
+const mopedStyle = { uri: "https://images.unsplash.com/photo-1630561222593-35652acc3905?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" };
+const fatTyre = { uri: "https://images.unsplash.com/photo-1631068136386-fa145d502a70?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZWxlY3RyaWMlMjBiaWtlc3xlbnwwfDF8MHx8fDI%3D" };
+const foldingStyle = { uri: "https://images.unsplash.com/photo-1590273018519-ba2db69e124c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWxlY3RyaWMlMjBiaWtlcyUyMGZvbGRpbmd8ZW58MHwxfDB8fHwy" };
+const mtbStyle = { uri: "https://images.unsplash.com/photo-1668106249278-cba50127e361?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwxfDB8fHwy" };
 
 const Categories = ({ navigation }) => {
+
     const screenWidth = Dimensions.get('window').width; // Get screen width
 
+    const data = [
+        { id: 1, title: "Moped Style", image: mopedStyle },
+        { id: 2, title: "Fat Tyre", image: fatTyre },
+        { id: 3, title: "Folding", image: foldingStyle },
+        { id: 4, title: "Mountain Bike", image: mtbStyle },
+    ];
+
+    const renderItem = ({ item }) => {
+        return (
+            <View style={[styles.container, {width: screenWidth}]}>
+                <ImageBackground source={item.image} style={styles.image}>
+                    <Text style={styles.heading}>{item.title}</Text>
+                </ImageBackground>
+            </View>
+        );
+    };
+
     return (
-        <ScrollView
-            style={styles.container}
-            alwaysBounceHorizontal={true}
-            centerContent={false} // Disable snapping
+        <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
             horizontal={true}
-            contentContainerStyle={{ width: screenWidth * 4 }} // Set content width
-            pagingEnabled={true} // Enable paging for one screen per swipe
-        >
-            <View style={[styles.viewOne, { width: screenWidth }]}>
-                <Text style={styles.heading}>Screen One</Text>
-                <TouchableOpacity 
-                    style={styles.button}
-                    onPress={() => navigation.navigate("Home")}
-                >
-                    <Text>Go Home!</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={[styles.viewTwo, { width: screenWidth }]}>
-                <Text style={styles.heading}>Screen Two</Text>
-            </View>
-            <View style={[styles.viewThree, { width: screenWidth }]}>
-                <Text style={styles.heading}>Screen Three</Text>
-            </View>
-            <View style={[styles.viewFour, { width: screenWidth }]}>
-                <Text style={styles.heading}>Screen Four</Text>
-            </View>
-        </ScrollView>
+            centerContent={true}
+            pagingEnabled={true}
+            contentContainerStyle={{ minWidth: screenWidth * data.length}}
+        />
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#11022f",
-        color: "#FFF",
-    },
-    viewOne: {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#010040",
     },
-    viewTwo: {
+    image: {
         flex: 1,
+        justifyContent: 'flex-start',
         alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#00674c",
-    },
-    viewThree: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#910000",
-    },
-    viewFour: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#5b3d00",
+        width: "100%",
+        paddingTop: 16,
     },
     heading: {
-        color: "#FFF",
+        width: "100%",
+        textAlign: "center",
+        color: "#fff",
         fontSize: 32,
         fontWeight: "bold",
         marginBottom: 12,
+        padding: 12,
+        backgroundColor: "rgba(0, 0, 0, .367)",
     },
     button: {
-        color: "#11022f",
-        backgroundColor: "#29d8ff",
+        backgroundColor: "#03073a",
         padding: 12,
+        marginBottom: 15,
+        alignItems: "center",
+        justifyContent: "Center",
     },
     buttonText: {
         fontSize: 17,
         fontWeight: "bold",
+        color: "#fff",
     },
-});
+})
 
 export default Categories;
