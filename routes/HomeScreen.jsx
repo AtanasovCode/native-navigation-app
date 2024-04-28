@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Text, TouchableHighlight, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 
 const image = { uri: 'https://images.unsplash.com/photo-1610569982425-c5ab6a017ab2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
@@ -8,20 +8,17 @@ const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={image} style={styles.image}>
-                <View style={{width: "60%"}}>
+                <View style={styles.subContainer}>
                     <Text style={styles.heading}>E-bike World</Text>
-                    <TouchableOpacity
+                    <TouchableHighlight
                         style={styles.button}
                         onPress={() => navigation.navigate("Categories")}
                     >
-                        <Text style={styles.buttonText}>E-Bike Categories</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate("Scroll")}
-                    >
-                        <Text style={styles.buttonText}>Scroll Page</Text>
-                    </TouchableOpacity>
+                        <Text style={styles.buttonText}>
+                            Explore World
+                        </Text>
+                    </TouchableHighlight>
+
                 </View>
             </ImageBackground>
         </View>
@@ -43,23 +40,37 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingTop: 16,
     },
+    subContainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "space-between",
+        height: "100%",
+        width: "70%",
+        paddingtop: 64,
+        paddingBottom: 64,
+    },
     heading: {
         color: "#000",
-        fontSize: 32,
-        fontWeight: "bold",
+        fontSize: 42,
+        fontWeight: "900",
         marginBottom: 12,
+        textAlign: "center",
     },
     button: {
-        backgroundColor: "#03073a",
-        padding: 12,
+        backgroundColor: "#fcfafa",
+        padding: 16,
+        width: "100%",
+        paddingLeft: 32,
+        paddingRight: 32,
         marginBottom: 15,
         alignItems: "center",
         justifyContent: "Center",
+        borderRadius: 30,
     },
     buttonText: {
         fontSize: 17,
         fontWeight: "bold",
-        color: "#fff",
+        color: "#000000",
     },
 })
 

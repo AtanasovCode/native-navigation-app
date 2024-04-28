@@ -1,4 +1,5 @@
-import { ScrollView, Text, View, TouchableOpacity, ImageBackground, FlatList } from "react-native";
+import React, { useState } from "react";
+import { Text, View, ImageBackground, FlatList } from "react-native";
 import { Dimensions, StyleSheet } from "react-native";
 
 const mopedStyle = { uri: "https://images.unsplash.com/photo-1630561222593-35652acc3905?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" };
@@ -10,6 +11,8 @@ const Categories = ({ navigation }) => {
 
     const screenWidth = Dimensions.get('window').width; // Get screen width
 
+    const [step, setStep] = useState(1);
+
     const data = [
         { id: 1, title: "Moped Style", image: mopedStyle },
         { id: 2, title: "Fat Tyre", image: fatTyre },
@@ -19,7 +22,7 @@ const Categories = ({ navigation }) => {
 
     const renderItem = ({ item }) => {
         return (
-            <View style={[styles.container, {width: screenWidth}]}>
+            <View style={[styles.container, { width: screenWidth }]}>
                 <ImageBackground source={item.image} style={styles.image}>
                     <Text style={styles.heading}>{item.title}</Text>
                 </ImageBackground>
@@ -28,15 +31,23 @@ const Categories = ({ navigation }) => {
     };
 
     return (
-        <FlatList
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            horizontal={true}
-            centerContent={true}
-            pagingEnabled={true}
-            contentContainerStyle={{ minWidth: screenWidth * data.length}}
-        />
+        <View style={styles.container}>
+            <FlatList
+                data={data}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                horizontal={true}
+                centerContent={true}
+                pagingEnabled={true}
+                contentContainerStyle={{ minWidth: screenWidth * data.length }}
+            />
+            <View style={styles.multistepContainer}>
+            <View style={[styles.step, step !== 1 && styles.stepInactive]} />
+                <View style={[styles.step, step !== 2 && styles.stepInactive]} />
+                <View style={[styles.step, step !== 3 && styles.stepInactive]} />
+                <View style={[styles.step, step !== 4 && styles.stepInactive]} />
+            </View>
+        </View>
     );
 };
 
@@ -75,6 +86,25 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#fff",
     },
+    multistepContainer: {
+        position: "absolute",
+        bottom: "5%",
+        left: 0,
+        width: "100%",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 15,
+    },
+    step: {
+        width: 25,
+        height: 25,
+        borderRadius: 50,
+        backgroundColor: "#fff",
+    },
+    stepInactive: {
+        opacity: .566,
+    }
 })
 
 export default Categories;
