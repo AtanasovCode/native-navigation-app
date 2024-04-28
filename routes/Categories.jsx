@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Text, View, ImageBackground, FlatList } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import { Text, View, ImageBackground, FlatList, TouchableHighlight } from "react-native";
 import { Dimensions, StyleSheet } from "react-native";
 
 const mopedStyle = { uri: "https://images.unsplash.com/photo-1630561222593-35652acc3905?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" };
@@ -8,10 +8,12 @@ const foldingStyle = { uri: "https://images.unsplash.com/photo-1590273018519-ba2
 const mtbStyle = { uri: "https://images.unsplash.com/photo-1668106249278-cba50127e361?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwxfDB8fHwy" };
 
 const Categories = ({ navigation }) => {
-
     const screenWidth = Dimensions.get('window').width; // Get screen width
 
-    const [step, setStep] = useState(1);
+    const flatListRef = useRef(null);
+
+    const [step, setStep] = useState(0);
+    const [viewableItems, setViewableItems] = useState([]);
 
     const data = [
         { id: 1, title: "Moped Style", image: mopedStyle },
@@ -30,22 +32,45 @@ const Categories = ({ navigation }) => {
         );
     };
 
+    const getVisible = (viewableItems) => {
+        const visibleItemIds = viewableItems.viewableItems.map((item) => item.item.id);
+        setViewableItems(visibleItemIds);
+    };
+
+    useEffect(() => {
+        if (viewableItems.length > 0) {
+            setStep(viewableItems[0]); // Assuming the first visible item is relevant
+        }
+    }, [viewableItems])
+
+    const handleStepPress = (id) => {
+        setStep(id);
+        flatListRef.current.scrollToIndex({ index: id - 1 }); // Adjust index to zero-based
+    };
+
     return (
         <View style={styles.container}>
             <FlatList
+                ref={flatListRef}
                 data={data}
                 renderItem={renderItem}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.id.toString()}
                 horizontal={true}
                 centerContent={true}
                 pagingEnabled={true}
                 contentContainerStyle={{ minWidth: screenWidth * data.length }}
+                onViewableItemsChanged={getVisible}
             />
             <View style={styles.multistepContainer}>
-            <View style={[styles.step, step !== 1 && styles.stepInactive]} />
-                <View style={[styles.step, step !== 2 && styles.stepInactive]} />
-                <View style={[styles.step, step !== 3 && styles.stepInactive]} />
-                <View style={[styles.step, step !== 4 && styles.stepInactive]} />
+                {data.map((item) => (
+                    <TouchableHighlight
+                        key={item.id}
+                        style={[styles.step, step !== item.id && styles.stepInactive]}
+                        onPress={() => handleStepPress(item.id)}
+                    >
+                        <Text style={styles.stepText}>{item.id}</Text>
+                    </TouchableHighlight>
+                ))}
             </View>
         </View>
     );
@@ -74,18 +99,6 @@ const styles = StyleSheet.create({
         padding: 12,
         backgroundColor: "rgba(0, 0, 0, .367)",
     },
-    button: {
-        backgroundColor: "#03073a",
-        padding: 12,
-        marginBottom: 15,
-        alignItems: "center",
-        justifyContent: "Center",
-    },
-    buttonText: {
-        fontSize: 17,
-        fontWeight: "bold",
-        color: "#fff",
-    },
     multistepContainer: {
         position: "absolute",
         bottom: "5%",
@@ -97,10 +110,16 @@ const styles = StyleSheet.create({
         gap: 15,
     },
     step: {
-        width: 25,
-        height: 25,
         borderRadius: 50,
+        width: 32,
+        height: 32,
         backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+        aspectRatio: 1,
+    },
+    stepText: {
+        fontSize: 18,
     },
     stepInactive: {
         opacity: .566,
