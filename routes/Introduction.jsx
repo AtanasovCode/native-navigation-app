@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Text, View, Image, FlatList, TouchableHighlight, ImageBackground } from "react-native";
 import { Dimensions, StyleSheet } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const learnHeaderImage = { uri: "https://images.unsplash.com/photo-1627697856513-10a5583bfbaa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
 const stylesHeaderImage = { uri: "https://images.unsplash.com/photo-1622734547816-47e9afe17021?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
