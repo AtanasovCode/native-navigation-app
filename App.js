@@ -6,22 +6,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import HomeScreen from './routes/HomeScreen';
-import Introduction from './routes/Categories';
-import ScrollScreen from './routes/ScrollScreen';
+import Introduction from './routes/Introduction';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  const [isFirstTime, setIsFirstTime] = useState(true);
+  const [isFirstTime, setIsFirstTime] = useState("true");
 
   useEffect(() => {
-    async function checkFirstTime() {
+    const checkFirstTime = async () => {
       try {
-        const value = await AsyncStorage.getItem('appOpenedBefore');
+        const value = await AsyncStorage.getItem('isFirstTime');
         if (value !== null) {
           setIsFirstTime(false);
-        }
+        } 
       } catch (error) {
         console.error('Error reading AsyncStorage:', error);
       }
@@ -30,32 +29,18 @@ const App = () => {
     checkFirstTime();
   }, []);
 
-  const markAppOpenedBefore = async () => {
-    try {
-      await AsyncStorage.setItem('appOpenedBefore', 'true');
-    } catch (error) {
-      console.error('Error storing data in AsyncStorage:', error);
-    }
-  };
-
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName={isFirstTime === "true" ? "Introduction" : "Home"}>
         <Stack.Screen
-          name="Home"
+          name="Introduction"
           component={Introduction}
           options={{
             headerShown: false,
           }}
-          listeners={({ navigation }) => ({
-            blur: () => {
-              markAppOpenedBefore();
-              navigation.navigate('Dashboard');
-            },
-          })}
         />
         <Stack.Screen
-          name="Dashboard"
+          name="Home"
           component={HomeScreen}
           options={{
             title: 'Home',

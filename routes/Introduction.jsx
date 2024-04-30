@@ -50,6 +50,13 @@ const Introduction = ({ navigation }) => {
         }
     ];
 
+    const setFirstTime = async () => {
+        try {
+          await AsyncStorage.setItem('isFirstTime', 'false');
+        } catch (error) {
+          console.error('Error saving isFirstTime to AsyncStorage:', error);
+        }
+      };
 
 
 
@@ -65,7 +72,10 @@ const Introduction = ({ navigation }) => {
                             :
                             <TouchableHighlight
                                 style={styles.button}
-                                onPress={() => navigation.navigate("Dashboard")}
+                                onPress={() => {
+                                    setFirstTime();
+                                    navigation.navigate("Home");
+                                }}
                             >
                                 <Text style={styles.buttonText}>
                                     Explore World
