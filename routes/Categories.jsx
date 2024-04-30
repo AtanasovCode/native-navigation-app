@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Text, View, ImageBackground, FlatList, TouchableHighlight } from "react-native";
+import { Text, View, Image, FlatList, TouchableHighlight, ImageBackground } from "react-native";
 import { Dimensions, StyleSheet } from "react-native";
 
-const mopedStyle = { uri: "https://images.unsplash.com/photo-1630561222593-35652acc3905?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" };
-const fatTyre = { uri: "https://images.unsplash.com/photo-1631068136386-fa145d502a70?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZWxlY3RyaWMlMjBiaWtlc3xlbnwwfDF8MHx8fDI%3D" };
+const learnHeaderImage = { uri: "https://images.unsplash.com/photo-1627697856513-10a5583bfbaa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
+const stylesHeaderImage = { uri: "https://images.unsplash.com/photo-1622734547816-47e9afe17021?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
+const batteryHeaderImage = { uri: "https://images.unsplash.com/photo-1623982783113-2f2940d3138a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
+const exploreImage = { uri: 'https://images.unsplash.com/photo-1610569982425-c5ab6a017ab2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
 const foldingStyle = { uri: "https://images.unsplash.com/photo-1590273018519-ba2db69e124c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWxlY3RyaWMlMjBiaWtlcyUyMGZvbGRpbmd8ZW58MHwxfDB8fHwy" };
 const mtbStyle = { uri: "https://images.unsplash.com/photo-1668106249278-cba50127e361?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwxfDB8fHwy" };
 
@@ -16,18 +18,61 @@ const Categories = ({ navigation }) => {
     const [viewableItems, setViewableItems] = useState([]);
 
     const data = [
-        { id: 1, title: "Moped Style", image: mopedStyle },
-        { id: 2, title: "Fat Tyre", image: fatTyre },
-        { id: 3, title: "Folding", image: foldingStyle },
-        { id: 4, title: "Mountain Bike", image: mtbStyle },
+        {
+            id: 1,
+            title: "Learn E-Bikes",
+            description: "Learn all about e-bikes",
+            image: learnHeaderImage,
+        },
+        {
+            id: 2,
+            title: "Explore Styles",
+            description: "Discover diverse e-bike styles, from moped to foldables.",
+            image: stylesHeaderImage,
+        },
+        {
+            id: 3,
+            title: "Battery and Range",
+            description: "Explore e-bike batteries and their impact on range.",
+            image: batteryHeaderImage,
+        },
+        {
+            id: 4,
+            title: "Exploration",
+            description: "From asphalt to mountains, find the best bike type for you",
+            image: mtbStyle
+        },
+        {
+            id: 5,
+            title: "E-bike World",
+            description: "Explore World!",
+            image: exploreImage,
+        }
     ];
+
+
+
 
     const renderItem = ({ item }) => {
         return (
             <View style={[styles.container, { width: screenWidth }]}>
-                <ImageBackground source={item.image} style={styles.image}>
-                    <Text style={styles.heading}>{item.title}</Text>
-                </ImageBackground>
+                <View style={{ width: screenWidth, alignItems: "center", justifyContent: "center, flex: 1" }}>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Image source={item.image} style={styles.image} />
+                    {
+                        item.id <= 4 ?
+                            <Text style={styles.description}>{item.description}</Text>
+                            :
+                            <TouchableHighlight
+                                style={styles.button}
+                                onPress={() => navigation.navigate("Home")}
+                            >
+                                <Text style={styles.buttonText}>
+                                    Explore World
+                                </Text>
+                            </TouchableHighlight>
+                    }
+                </View>
             </View>
         );
     };
@@ -49,7 +94,7 @@ const Categories = ({ navigation }) => {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { width: screenWidth }]}>
             <FlatList
                 ref={flatListRef}
                 data={data}
@@ -68,7 +113,7 @@ const Categories = ({ navigation }) => {
                         style={[styles.step, step !== item.id && styles.stepInactive]}
                         onPress={() => handleStepPress(item.id)}
                     >
-                        <Text style={styles.stepText}>{item.id}</Text>
+                        <Text></Text>
                     </TouchableHighlight>
                 ))}
             </View>
@@ -80,28 +125,34 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
+        paddingTop: 24,
+        backgroundColor: "#030224",
+        color: "#000",
     },
     image: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: "center",
-        width: "100%",
-        paddingTop: 16,
+        width: "85%",
+        aspectRatio: 9 / 16,
+        borderRadius: 32,
     },
-    heading: {
+    title: {
         width: "100%",
         textAlign: "center",
         color: "#fff",
-        fontSize: 32,
+        fontSize: 36,
         fontWeight: "bold",
-        marginBottom: 12,
-        padding: 12,
-        backgroundColor: "rgba(0, 0, 0, .367)",
+        marginBottom: 20,
+    },
+    description: {
+        width: "80%",
+        textAlign: "center",
+        fontSize: 15,
+        color: "#fff",
+        marginTop: 20,
     },
     multistepContainer: {
         position: "absolute",
-        bottom: "5%",
+        bottom: "3.5%",
         left: 0,
         width: "100%",
         flexDirection: "row",
@@ -111,19 +162,30 @@ const styles = StyleSheet.create({
     },
     step: {
         borderRadius: 50,
-        width: 32,
-        height: 32,
+        width: 15,
+        height: 15,
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
         aspectRatio: 1,
     },
-    stepText: {
-        fontSize: 18,
-    },
     stepInactive: {
-        opacity: .566,
-    }
+        opacity: .4,
+    },
+    button: {
+        backgroundColor: "#fcfafa",
+        padding: 14,
+        width: "60%",
+        alignItems: "center",
+        justifyContent: "Center",
+        borderRadius: 32,
+        marginTop: 16,
+    },
+    buttonText: {
+        fontSize: 16,
+        fontWeight: "bold",
+        color: "#000000",
+    },
 })
 
 export default Categories;

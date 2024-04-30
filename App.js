@@ -15,17 +15,25 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Home' }}
+          options={{
+            title: 'Home',
+            headerStyle: {
+              backgroundColor: "rgb(0, 76, 126)",
+            },
+            headerTintColor: "#fff",
+          }}
         />
-        <Stack.Screen 
-          name="Categories" 
-          component={Categories} 
-          options={{title: 'Bike Categories'}}
+        <Stack.Screen
+          name="Categories"
+          component={Categories}
+          options={{
+            headerShown: false,
+          }}
         />
-        <Stack.Screen 
+        <Stack.Screen
           name="Scroll"
           component={ScrollScreen}
-          options={{title: "Scroll"}}
+          options={{ title: "Scroll" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
