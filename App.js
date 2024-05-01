@@ -43,11 +43,7 @@ const App = () => {
           name="Home"
           component={HomeScreen}
           options={{
-            title: 'Home',
-            headerStyle: {
-              backgroundColor: "rgb(0, 76, 126)",
-            },
-            headerTintColor: "#fff",
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
