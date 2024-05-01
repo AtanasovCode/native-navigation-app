@@ -3,6 +3,7 @@ import {
     FlatList,
     View,
     Text,
+    Image,
     ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -12,19 +13,22 @@ import Hero from "../components/Hero";
 
 const Explanation = ({ navigation, route }) => {
 
-    const data = [route.params];
+    const data = route.params;
+
+    console.log(data.description);
 
     const renderItem = ({ item }) => {
         return (
-            <View style={{ flex: 1, backgroundColor: "#000", width: "100%", height: "100%" }}>
-                <Text style={{ fontSize: 32, color: "#fff" }}>{item.title}</Text>
+            <View style={{ flex: 1, backgroundColor: "#000", }}>
+                <Text style={{ color: "#fff" }}>{item.name}</Text>
+                <Text style={{ color: "#fff" }}>{item.description}</Text>
             </View>
         );
     };
 
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Hero 
                 data={data}
             />

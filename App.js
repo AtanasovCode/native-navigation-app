@@ -50,7 +50,7 @@ const App = () => {
         <Stack.Screen
           name="Explanation"
           component={Explanation}
-          options={({ route }) => ({ title: route.params?.data?.name })}        
+          options={({ route }) => ({ title: route.params?.name })}        
         />
       </Stack.Navigator>
     </NavigationContainer>

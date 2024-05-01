@@ -1,5 +1,6 @@
 import React from "react";
-import { 
+import { StyleSheet } from "react-native";
+import {
     FlatList,
     View,
     Text,
@@ -8,10 +9,71 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 
 
-const Hero = () => {
+const Hero = ({ data }) => {
+
+    console.log(data.name);
+
     return (
-        <View></View>
+        <View style={styles.container}>
+            <ImageBackground
+                source={data.uri}
+                style={styles.imageBackground}
+            >
+                <LinearGradient
+                    colors={['rgba(0, 0, 0, 0)', '#1a1a1b']}
+                    style={styles.gradient}
+                    locations={[0.655, 1]}
+                />
+            </ImageBackground>
+            <View style={styles.textWrapper}>
+                <Text style={styles.title}>{ data.title }</Text>
+                <Text style={styles.description}>{ data.description }</Text>
+            </View>
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#1a1a1b",
+    },
+    imageBackground: {
+        flex: 1,
+        height: "90%",
+        position: "relative",
+    },
+    gradient: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: "flex-end",
+        height: "90%",
+    },
+    textWrapper: {
+        position: "absolute",
+        bottom: "6%",
+        left: 0,
+        paddingRight: 26,
+        paddingLeft: 26,
+        width: "100%",
+    },
+    title: {
+        color: "#fff",
+        fontSize: 36,
+        fontWeight: "700",
+        marginBottom: 16,
+        textAlign: "left",
+        width: "100%",
+    },
+    description: {
+        fontSize: 15,
+        color: "#fff",
+        textAlign: "left",
+        width: "100%",
+    }
+})
 
 export default Hero;

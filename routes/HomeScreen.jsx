@@ -8,6 +8,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 const background = { uri: 'https://images.unsplash.com/photo-1620984721051-36dafb139faa?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
 
+const batteryCover = { uri: 'https://images.unsplash.com/photo-1669965691237-e8fea18b09e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWJpa2UlMjBiYXR0ZXJ5fGVufDB8MXwwfHx8Mg%3D%3D' };
+
 const HomeScreen = ({ navigation }) => {
 
     const data = [
@@ -46,8 +48,7 @@ const HomeScreen = ({ navigation }) => {
                     id: item.id,
                     title: "Learn about e-bike batteries",
                     description: "The battery is the most important part of an e-bike, learn which one is the right choice for you",
-                    uri: "https://images.unsplash.com/photo-1669965691237-e8fea18b09e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWJpa2UlMjBiYXR0ZXJ5fGVufDB8MXwwfHx8Mg%3D%3D",
-
+                    uri: batteryCover,
                 })}
             >
                 <View style={renderStyles.container}>
