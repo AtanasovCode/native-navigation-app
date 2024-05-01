@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import HomeScreen from './routes/HomeScreen';
 import Introduction from './routes/Introduction';
+import Explanation from './routes/Explanation';
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,11 @@ const App = () => {
           options={{
             headerShown: false,
           }}
+        />
+        <Stack.Screen
+          name="Explanation"
+          component={Explanation}
+          options={({ route }) => ({ title: route.params?.data?.name })}        
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -39,7 +39,17 @@ const HomeScreen = ({ navigation }) => {
 
     const renderItem = ({ item }) => {
         return (
-            <TouchableHighlight style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+            <TouchableHighlight 
+                style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+                onPress={() => navigation.navigate("Explanation", {
+                    name: item.name,
+                    id: item.id,
+                    title: "Learn about e-bike batteries",
+                    description: "The battery is the most important part of an e-bike, learn which one is the right choice for you",
+                    uri: "https://images.unsplash.com/photo-1669965691237-e8fea18b09e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWJpa2UlMjBiYXR0ZXJ5fGVufDB8MXwwfHx8Mg%3D%3D",
+
+                })}
+            >
                 <View style={renderStyles.container}>
                     <View style={renderStyles.iconWrapper}>
                         {item.icon}
@@ -71,7 +81,7 @@ const HomeScreen = ({ navigation }) => {
             </ImageBackground>
             <View style={styles.wrapper}>
                 <StatusBar
-                    barStyle="light-content"
+                    barStyle="dark-content"
                     backgroundColor="transparent"
                 />
                 <Text style={styles.title}>

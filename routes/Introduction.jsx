@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Text, View, Image, FlatList, TouchableHighlight, ImageBackground } from "react-native";
 import { Dimensions, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StatusBar } from "expo-status-bar";
 
 const learnHeaderImage = { uri: "https://images.unsplash.com/photo-1627697856513-10a5583bfbaa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
 const stylesHeaderImage = { uri: "https://images.unsplash.com/photo-1622734547816-47e9afe17021?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
@@ -53,11 +54,11 @@ const Introduction = ({ navigation }) => {
 
     const setFirstTime = async () => {
         try {
-          await AsyncStorage.setItem('isFirstTime', 'false');
+            await AsyncStorage.setItem('isFirstTime', 'false');
         } catch (error) {
-          console.error('Error saving isFirstTime to AsyncStorage:', error);
+            console.error('Error saving isFirstTime to AsyncStorage:', error);
         }
-      };
+    };
 
 
 
@@ -106,6 +107,10 @@ const Introduction = ({ navigation }) => {
 
     return (
         <View style={[styles.container, { width: screenWidth }]}>
+            <StatusBar
+                style="light"
+                backgroundColor="#07051d"
+            />
             <FlatList
                 ref={flatListRef}
                 data={data}
