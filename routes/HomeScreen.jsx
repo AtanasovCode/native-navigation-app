@@ -21,19 +21,19 @@ const HomeScreen = ({ navigation }) => {
             id: 2,
             name: 'Battery',
             description: 'Learn about battery and power.',
-            icon: <Entypo name="battery" size={42} color="#fff" />
+            icon: <Entypo name="battery" size={42} color="#00e339" />
         },
         {
             id: 3,
             name: 'Terrain',
             description: 'Understand e-bike capabilities',
-            icon: <MaterialCommunityIcons name="road-variant" size={42} color="#fff" />
+            icon: <MaterialCommunityIcons name="road-variant" size={42} color="#9d9a9a" />
         },
         {
             id: 4,
             name: 'Performance',
             description: 'Discover different power options',
-            icon: <Ionicons name="speedometer" size={42} color="#fff" />
+            icon: <Ionicons name="speedometer" size={42} color="#f69d9d" />
         },
     ];
 
