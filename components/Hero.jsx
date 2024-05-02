@@ -8,13 +8,12 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const Hero = ({ data }) => {
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <StatusBar
                 style={data.id === 1 ? "light" : "dark"}
             />
@@ -32,7 +31,7 @@ const Hero = ({ data }) => {
                 <Text style={styles.title}>{data.title}</Text>
                 <Text style={styles.description}>{data.description}</Text>
             </View>
-        </SafeAreaView>
+        </View>
     );
 }
 
@@ -61,7 +60,6 @@ const styles = StyleSheet.create({
         left: 0,
         paddingRight: 26,
         paddingLeft: 26,
-        width: "100%",
     },
     title: {
         color: "#fff",
@@ -69,13 +67,11 @@ const styles = StyleSheet.create({
         fontWeight: "700",
         marginBottom: 16,
         textAlign: "left",
-        width: "100%",
     },
     description: {
         fontSize: 15,
         color: "#fff",
         textAlign: "left",
-        width: "100%",
     }
 })
 

@@ -47,12 +47,12 @@ const data = [
     },
 ];
 
-const mtb = { uri: 'https://images.unsplash.com/photo-1668106738119-f01ae9efbcfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwwfDB8fHwy' };
-const city = { uri: 'https://images.unsplash.com/photo-1620802051782-725fa33db067?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
-const fold = { uri: 'https://images.unsplash.com/photo-1629334697871-16eb3935db52?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
-const moped = { uri: 'https://images.unsplash.com/photo-1618897224084-8b5e94258a74?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
-const cargo = { uri: 'https://images.unsplash.com/photo-1607980909568-cde775c48cdf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVsZWN0cmljJTIwYmlrZSUyMGNhcmdvfGVufDB8MHwwfHx8Mg%3D%3D' };
-const fatTire = { uri: 'https://images.unsplash.com/photo-1635560019796-e256b3737dc2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
+const mtb = { uri: 'https://images.unsplash.com/photo-1668106249278-cba50127e361?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwxfDB8fHwy' };
+const city = { uri: 'https://images.unsplash.com/photo-1704902629374-8e8c366e474f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGVsZWN0cmljJTIwY2l0eSUyMGJpa2V8ZW58MHwxfDB8fHwy' };
+const fold = { uri: 'https://images.unsplash.com/photo-1590273018519-ba2db69e124c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGVsZWN0cmljJTIwYmlrZXxlbnwwfDF8MHx8fDI%3D' };
+const moped = { uri: 'https://images.unsplash.com/photo-1627631498315-3116f6484188?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
+const cargo = { uri: 'https://images.unsplash.com/photo-1593929976216-f746e488aa45?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
+const fatTire = { uri: 'https://images.unsplash.com/photo-1625304844069-3e9708f55755?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGVsZWN0cmljJTIwYmlrZXxlbnwwfDF8MHx8fDI%3D' };
 
 const styleData = [
     {
