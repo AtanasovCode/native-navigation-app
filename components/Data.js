@@ -58,7 +58,7 @@ const styleData = [
     {
         title: "What kind of difference does it make?",
         description: "Different styles of e-bikes offer different pros and cons. Knowing what bike type suits you the best may be the difference between having fun riding and having a bad time on the bike",
-        image: null,
+        image: "",
     },
     {
         title: "Mountain E-Bike",

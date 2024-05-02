@@ -20,7 +20,7 @@ const Explanation = ({ navigation, route }) => {
 
     const renderItem = ({ item }) => {
         return (
-            <View style={{flex: 1, height: screenHeight}}>{ item }</View>
+            <View style={{flex: 1, minHeight: screenHeight}}>{ item }</View>
         );
     }
 

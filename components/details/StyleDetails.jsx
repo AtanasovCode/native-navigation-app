@@ -10,13 +10,14 @@ import { styleData } from "../Data";
 
 const StyleDetails = () => {
 
-    console.log(styleData);
+    const DATA = styleData;
+
 
     const renderItem = ({ item }) => {
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>{item.title}</Text>
-                {item.image !== null && <Image source={item.image} style={styles.image} />}
+                {item.image !== "" && <Image source={item.image} style={styles.image} />}
                 <Text style={styles.baseText}>{item.description}</Text>
                 <Text style={styles.baseText}>{item.usefulFor}</Text>
             </View>
@@ -24,18 +25,19 @@ const StyleDetails = () => {
     }
 
     return (
-        <FlatList
-            style={{flex: 1, backgroundColor: "#333"}}
-            data={styleData}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => String(index)}
-        />
+        <View style={{flex: 1}}>
+            <FlatList
+                style={{ flex: 1}}
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={(item, index) => String(index)}
+            />
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
     },
     title: {
         fontSize: 26,
@@ -44,7 +46,6 @@ const styles = StyleSheet.create({
         color: "#fff",
     },
     image: {
-        flex: 1,
         height: 300,
         marginBottom: 16,
     },
