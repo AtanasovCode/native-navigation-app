@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, Text, SafeAreaView } from "react-native";
+import { View, ScrollView, Text, SafeAreaView, FlatList } from "react-native";
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
@@ -13,21 +13,27 @@ const Explanation = ({ navigation, route }) => {
 
     const data = route.params;
 
+    const DATA = [
+        <Hero data={data} />,
+        <Details type={data.type} />
+    ]
+
+    const renderItem = ({ item }) => {
+        return (
+            <View style={{flex: 1, height: screenHeight}}>{ item }</View>
+        );
+    }
+
 
     return (
-        <SafeAreaView style={[styles.container, { minHeight: screenHeight }]}>
+        <View style={[styles.container, { minHeight: screenHeight }]}>
             <StatusBar style="light" />
-            <ScrollView>
-                <View style={[styles.wrapper, { height: screenHeight }]}>
-                    <Hero data={data} />
-                </View>
-                <View style={[styles.wrapper, {minHeight: screenHeight}]}>
-                    <Details 
-                        type={data.type}
-                    />
-                </View>
-            </ScrollView>
-        </SafeAreaView>
+            <FlatList 
+                data={DATA}
+                keyExtractor={(item, index) => String(index)}
+                renderItem={renderItem}
+            />
+        </View>
     );
 };
 

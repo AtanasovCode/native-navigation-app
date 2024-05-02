@@ -5,13 +5,19 @@ import {
     ScrollView,
 } from "react-native";
 import { StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
+import StyleDetails from "./details/StyleDetails";
 
 const Details = ({ type }) => {
+
+    const getComponent = () => {
+        if(type === "style") return <StyleDetails />
+    }
+
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={styles.scroll}></ScrollView>
-        </SafeAreaView>
+        <View style={{flex: 1}}>
+            <StyleDetails />
+        </View>
     );
 }
 
@@ -21,7 +27,6 @@ const styles = StyleSheet.create({
         padding: 16,
         backgroundColor: "#000",
     },
-    scroll: {},
     baseText: {
         fontSize: 17,
         marginBottom: 26,
