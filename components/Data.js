@@ -56,11 +56,6 @@ const fatTire = { uri: 'https://images.unsplash.com/photo-1625304844069-3e9708f5
 
 const styleData = [
     {
-        title: "What kind of difference does it make?",
-        description: "Different styles of e-bikes offer different pros and cons. Knowing what bike type suits you the best may be the difference between having fun riding and having a bad time on the bike",
-        image: "",
-    },
-    {
         title: "Mountain E-Bike",
         description: "Built for conquering tough terrain, E-MTBs boast sturdy suspension systems, wide knobby tires for gripping loose surfaces, and powerful motors to tackle steep climbs. They often have lower handlebars for a more aggressive riding posture.",
         usefulFor: "Off-road adventures, tackling trails, mountain biking enthusiasts, riders who want a challenge with an extra boost.",

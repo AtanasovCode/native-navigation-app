@@ -21,21 +21,14 @@ const StyleDetails = () => {
     const renderItem = ({ item }) => {
         return (
             <View style={[styles.container, { minHeight: screenHeight }]}>
-                {
-                    item.image !== "" ?
-                        <ImageBackground source={item.image} style={styles.image}>
-                            <LinearGradient
-                                colors={['rgba(0, 0, 0, 0)', '#1a1a1b']}
-                                style={styles.gradient}
-                                locations={[0.555, 1]}
-                            />
-                            <Text style={[styles.title, styles.baseText]}>{item.title}</Text>
-                        </ImageBackground>
-                        :
-                        (
-                            <Text style={[styles.title, styles.baseText]}>{item.title}</Text>
-                        )
-                }
+                <ImageBackground source={item.image} style={styles.image}>
+                    <LinearGradient
+                        colors={['rgba(0, 0, 0, 0)', '#1a1a1b']}
+                        style={styles.gradient}
+                        locations={[0.55, 1]}
+                    />
+                    <Text style={[styles.title, styles.baseText]}>{item.title}</Text>
+                </ImageBackground>
                 <Text style={[styles.baseText, styles.text]}>{item.description}</Text>
                 {item.usefulFor && <Text style={[styles.baseText, styles.subTitle]}>Useful For</Text>}
                 <Text style={[styles.baseText, styles.text]}>{item.usefulFor}</Text>
@@ -44,7 +37,16 @@ const StyleDetails = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <View>
+            <View style={styles.container}>
+                <Text style={[styles.baseText, styles.title, {marginBottom: 16}]}>
+                    Different Style, Different Purpose
+                </Text>
+                <Text style={[styles.text, styles.baseText]}>
+                    Each e-bike style has it'sown pros and cons. One bike style might be better for city riding
+                    while another might be better suited for steep mountain climbing.
+                </Text>
+            </View>
             <FlatList
                 style={{ flex: 1 }}
                 data={DATA}
@@ -57,7 +59,8 @@ const StyleDetails = () => {
 
 const styles = StyleSheet.create({
     container: {
-
+        marginTop: 32,
+        marginBottom: 32,
     },
     title: {
         fontSize: 36,
