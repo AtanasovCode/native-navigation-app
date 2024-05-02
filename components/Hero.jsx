@@ -7,14 +7,17 @@ import {
     ImageBackground,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const Hero = ({ data }) => {
 
-    console.log(data.name);
-
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <StatusBar
+                style={data.id === 1 ? "light" : "dark"}
+            />
             <ImageBackground
                 source={data.uri}
                 style={styles.imageBackground}
@@ -26,10 +29,10 @@ const Hero = ({ data }) => {
                 />
             </ImageBackground>
             <View style={styles.textWrapper}>
-                <Text style={styles.title}>{ data.title }</Text>
-                <Text style={styles.description}>{ data.description }</Text>
+                <Text style={styles.title}>{data.title}</Text>
+                <Text style={styles.description}>{data.description}</Text>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 

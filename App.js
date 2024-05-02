@@ -50,17 +50,9 @@ const App = () => {
         <Stack.Screen
           name="Explanation"
           component={Explanation}
-          options={({ route }) => ({
-            title: route.params?.name,
-            headerStyle: {
-              backgroundColor: "#1a1a1b70",
-            },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerTitleAlign: "center",
-          })}
+          options={{
+            headerShown: false
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
