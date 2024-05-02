@@ -21,7 +21,7 @@ const App = () => {
         const value = await AsyncStorage.getItem('isFirstTime');
         if (value !== null) {
           setIsFirstTime(false);
-        } 
+        }
       } catch (error) {
         console.error('Error reading AsyncStorage:', error);
       }
@@ -50,7 +50,17 @@ const App = () => {
         <Stack.Screen
           name="Explanation"
           component={Explanation}
-          options={({ route }) => ({ title: route.params?.name })}        
+          options={({ route }) => ({
+            title: route.params?.name,
+            headerStyle: {
+              backgroundColor: "#1a1a1b70",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+            headerTitleAlign: "center",
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>

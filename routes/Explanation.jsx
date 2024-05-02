@@ -5,6 +5,7 @@ import {
     Text,
     Image,
     ImageBackground,
+    StatusBar,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -29,7 +30,7 @@ const Explanation = ({ navigation, route }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <Hero 
+            <Hero
                 data={data}
             />
         </View>
