@@ -138,26 +138,32 @@ const batteryData = [
     }
 ]
 
+const cityStreet = require('../assets/images/capabilities/city.jpg');
+const offRoad = require('../assets/images/capabilities/offRoad.jpg');
+const mountainTerrain = require('../assets/images/capabilities/mountain.jpg');
+const beachRiding = require('../assets/images/capabilities/beach.jpg');
+
+
 const capabilitiesData = [
     {
         title: "Commuting & City Streets",
         description: "Commuting and city streets are ideal for most e-bikes. They typically involve paved surfaces with moderate inclines. Comfort and maneuverability are key features to consider. E-bikes with moderate power levels (250W - 500W) are sufficient for navigating city traffic.",
-        image: "cityStreet"
+        image: cityStreet
     },
     {
         title: "Off-road & Trails",
         description: "Off-road trails and paths present a challenge with unpaved surfaces, bumps, and potential inclines. E-bikes with wider, knobby tires, suspension systems, and higher power levels (500W+) are better suited for handling rough terrain. Consider features like disc brakes for improved stopping power on loose surfaces.",
-        image: "offRoad"
+        image: offRoad
     },
     {
         title: "Hilly Terrain & Mountains",
         description: "Hilly terrain and mountain paths involve frequent steep inclines and descents. E-bikes with powerful motors (750W+), high capacity batteries, and robust suspension systems are recommended for conquering these challenging climbs. Ensure your e-bike has good braking systems for safe descents.",
-        image: "mountainTerrain"
+        image: mountainTerrain
     },
     {
-        title: "Beach Riding (optional)",
+        title: "Beach Riding",
         description: "Beach riding presents a unique challenge with sand and potentially saltwater exposure. E-bikes with wide, fat tires specifically designed for sand are ideal. Consider features like corrosion-resistant components if you plan on frequent beach rides.",
-        image: "beachRiding"
+        image: beachRiding
     }
 ]
 

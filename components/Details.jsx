@@ -7,6 +7,7 @@ import {
 import { StyleSheet } from "react-native";
 
 import StyleDetails from "./details/StyleDetails";
+import CapabilitiesDetails from "./details/CapabilitiesDetails";
 
 const Details = ({ type }) => {
 
@@ -16,7 +17,7 @@ const Details = ({ type }) => {
 
     return (
         <View style={{flex: 1}}>
-            <StyleDetails />
+            <CapabilitiesDetails />
         </View>
     );
 }
