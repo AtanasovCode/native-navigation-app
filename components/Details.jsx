@@ -8,6 +8,7 @@ import { StyleSheet } from "react-native";
 
 import StyleDetails from "./details/StyleDetails";
 import CapabilitiesDetails from "./details/CapabilitiesDetails";
+import BatteryPower from "./details/BatteryPower";
 
 const Details = ({ type }) => {
 
@@ -15,6 +16,7 @@ const Details = ({ type }) => {
         <View style={{flex: 1}}>
             {type === "styles" && <StyleDetails />}
             {type === "capabilities" && <CapabilitiesDetails />}
+            {type === "battery" && <BatteryPower />}
         </View>
     );
 }

@@ -1,10 +1,8 @@
 import {
     FlatList,
     Text,
-    Image,
     ImageBackground,
     View,
-    Animated,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet } from "react-native";

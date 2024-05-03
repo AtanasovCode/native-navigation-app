@@ -19,15 +19,6 @@ const data = [
         type: "styles",
     },
     {
-        id: 2,
-        name: 'Battery and Power',
-        icon: <Entypo name="battery" size={36} color="#ffffff" />,
-        title: "Batteries and how they affect power",
-        description: "The battery is the most important component of any e-bike.",
-        uri: batteryCover,
-        type: "battery",
-    },
-    {
         id: 3,
         name: 'E-Bike Capabilities',
         icon: <MaterialCommunityIcons name="road-variant" size={36} color="#ffffff" />,
@@ -37,24 +28,15 @@ const data = [
         type: "capabilities",
     },
     {
-        id: 4,
-        name: 'Power Options',
-        icon: <Ionicons name="speedometer" size={36} color="#ffffff" />,
-        title: "Types of Power Options for E-Bikes",
-        description: "250W, 750W, 1000W, what do all of these mean?",
-        uri: powerCover,
-        type: "power",
+        id: 2,
+        name: 'Battery and Power',
+        icon: <Entypo name="battery" size={36} color="#ffffff" />,
+        title: "Batteries and how they affect power",
+        description: "The battery is the most important component of any e-bike.",
+        uri: batteryCover,
+        type: "battery",
     },
 ];
-
-//mtb link = { uri: 'https://images.unsplash.com/photo-1668106249278-cba50127e361?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwxfDB8fHwy' };
-//city link = { uri: 'https://images.unsplash.com/photo-1704902629374-8e8c366e474f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGVsZWN0cmljJTIwY2l0eSUyMGJpa2V8ZW58MHwxfDB8fHwy' };
-// fold link = { uri: 'https://images.unsplash.com/photo-1590273018519-ba2db69e124c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGVsZWN0cmljJTIwYmlrZXxlbnwwfDF8MHx8fDI%3D' };
-// moped link = { uri: 'https://images.unsplash.com/photo-1627631498315-3116f6484188?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
-// cargo link = { uri: 'https://images.unsplash.com/photo-1593929976216-f746e488aa45?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
-// fatTire link = { uri: 'https://images.unsplash.com/photo-1625304844069-3e9708f55755?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGVsZWN0cmljJTIwYmlrZXxlbnwwfDF8MHx8fDI%3D' };
-
-
 
 const mtb = require('../assets/images/styles/mtb.jpg');
 const city = require('../assets/images/styles/city.jpg');
@@ -103,40 +85,43 @@ const styleData = [
     },
 ];
 
+
+const range = require('../assets/images/battery/range.jpg');
+const voltage = require('../assets/images/battery/voltage.jpg');
+
 const batteryData = [
     {
         title: "Battery Types",
-        description: "Most e-bikes use Lithium-ion (Li-ion) batteries. These are lightweight, rechargeable, and offer good range. However, some older models might use Nickel-Metal Hydride (NiMH) batteries, which are heavier and have a shorter lifespan."
+        description: "Most e-bikes use Lithium-ion (Li-ion) batteries. These are lightweight, rechargeable, and offer good range. However, some older models might use Nickel-Metal Hydride (NiMH) batteries, which are heavier and have a shorter lifespan. Lithium-ion batteries are preferred for their high energy density and low self-discharge rate, making them suitable for frequent use. Nickel-Metal Hydride (NiMH) batteries, while less common nowadays, are known for their stable performance in extreme temperatures and are environmentally friendly compared to older battery chemistries like lead-acid."
     },
     {
         title: "Voltage (V)",
-        description: "Voltage (V) indicates the battery's electrical power. Common voltages for e-bikes are 36V, 48V, and 72V. Higher voltage generally translates to more power and higher top speeds, but also affects weight and range."
+        description: "Voltage (V) indicates the battery's electrical power. Common voltages for e-bikes are 36V, 48V, and 72V. Higher voltage generally translates to more power and higher top speeds, but also affects weight and range. Higher voltage batteries often require more robust motor and controller systems, contributing to increased costs and weight. Some e-bike systems allow for multiple batteries to be connected in series for higher voltages, offering flexibility in balancing power and weight distribution.",
+        image: voltage,
     },
     {
         title: "Capacity (Ah)",
-        description: "Capacity (Ah) refers to the battery's energy storage. Higher capacity (Ah) means longer range on a single charge. This is especially important if you plan on longer rides."
+        description: "Capacity (Ah) refers to the battery's energy storage. Higher capacity (Ah) means longer range on a single charge. This is especially important if you plan on longer rides. Battery capacity affects not only range but also the overall lifespan of the battery, as deeper discharge cycles can accelerate degradation. It's essential to match the battery capacity with your typical riding needs to avoid over-specifying and carrying unnecessary weight."
     },
     {
         title: "Watt-hours (Wh)",
-        description: "Watt-hours (Wh) is a combination of voltage and capacity (V x Ah). It represents the total energy stored in the battery. Higher Wh translates to longer range."
+        description: "Watt-hours (Wh) is a combination of voltage and capacity (V x Ah). It represents the total energy stored in the battery. Higher Wh translates to longer range. Watt-hours directly impact the e-bike's performance, with higher values providing more torque for uphill climbs and faster acceleration. However, larger battery capacities also mean longer charging times and potentially higher costs."
     },
     {
         title: "Range",
-        description: "Range is the estimated distance you can travel on a single charge. It depends on various factors like battery capacity, terrain, and your riding style. Most e-bikes offer a range between 20-100 miles."
+        description: "Range is the estimated distance you can travel on a single charge. It depends on various factors like battery capacity, terrain, and your riding style. Most e-bikes offer a range between 20-100 miles. Range estimates can vary significantly based on riding conditions, such as wind resistance, tire pressure, and rider weight. Advanced e-bike systems may incorporate regenerative braking technology, which can",
+        image: range,
     },
     {
         title: "Charging Time",
-        description: "Charging time varies depending on the battery size and charger. Typically, a full charge can take anywhere from 2 to 8 hours."
+        description: "Charging time varies depending on the battery size and charger. Typically, a full charge can take anywhere from 2 to 8 hours. Longer charging times are often associated with higher capacity batteries. It's essential to use the manufacturer-recommended charger and avoid fast-charging methods that may degrade battery life prematurely."
     },
     {
         title: "Battery Life",
-        description: "E-bike batteries have a limited lifespan and degrade over time. This depends on usage and charging habits. With proper care, a good quality e-bike battery can last for 3-5 years."
+        description: "E-bike batteries have a limited lifespan and degrade over time. This depends on usage and charging habits. With proper care, a good quality e-bike battery can last for 3-5 years. Battery lifespan can be extended by avoiding deep discharges, storing the battery at optimal temperatures, and using a maintenance charge during long periods of storage. Regular inspections for signs of wear and tear, such as bulging or leakage, are also recommended to ensure safety and longevity."
     },
-    {
-        title: "Removable Battery",
-        description: "Many e-bikes come with removable batteries. This allows for easy charging at home or on the go. You can also invest in a spare battery for extended rides."
-    }
 ]
+
 
 const cityStreet = require('../assets/images/capabilities/city.jpg');
 const offRoad = require('../assets/images/capabilities/offRoad.jpg');
