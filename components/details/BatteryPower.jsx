@@ -5,7 +5,7 @@ import {
     ImageBackground,
 } from "react-native";
 import { StyleSheet } from "react-native";
-import { batteryData, powerData } from "../Data";
+import { batteryData, motorData, powerData } from "../Data";
 import { Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -35,6 +35,29 @@ const BatteryPower = () => {
                 <Text style={[styles.baseText, styles.text]}>{item.description}</Text>
             </View>
         );
+    };
+
+    const powerItem = ({ item }) => {
+        return (
+            <View style={[powerStyles.container]}>
+                <View style={powerStyles.wrapper}>
+                    <Text style={[powerStyles.title]}>{item.title}</Text>
+                </View>
+                <View style={powerStyles.wrapper}>
+                    <Text style={[powerStyles.text]}>{item.description}</Text>
+
+                </View>
+            </View>
+        );
+    }
+
+    const motorItem = ({ item }) => {
+        return (
+            <View style={[styles.container]}>
+                <Text style={[styles.title, styles.baseText]}>{item.title}</Text>
+                <Text style={[styles.text, styles.baseText]}>{item.description}</Text>
+            </View>
+        );
     }
 
     return (
@@ -44,6 +67,18 @@ const BatteryPower = () => {
                 data={batteryData}
                 renderItem={batteryItem}
                 keyExtractor={(item, index) => String(index)}
+            />
+            <Text style={[styles.mainTitle, styles.baseText]}>E-Bike Motors</Text>
+            <FlatList
+                data={motorData}
+                renderItem={motorItem}
+                keyExtractor={(item, index) => String(index * 5)}
+            />
+            <FlatList
+                data={powerData}
+                renderItem={powerItem}
+                keyExtractor={(item, index) => String(index * 5)}
+                style={{marginTop: 26,}}
             />
         </View>
     );
@@ -87,7 +122,32 @@ const styles = StyleSheet.create({
 })
 
 const powerStyles = StyleSheet.create({
-    container: {},
+    container: {
+        flexDirection: "row",
+        paddingLeft: 16,
+        paddingRight: 16,
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: 32,
+        borderBottomWidth: 1,
+        borderBottomColor: "#999999",
+        paddingBottom: 22,
+    },
+    wrapper: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: "600",
+        marginRight: 16,
+        color: "#fff",
+    },
+    text: {
+        color: "#fff",
+        fontSize: 13,
+    },
 })
 
 export default BatteryPower

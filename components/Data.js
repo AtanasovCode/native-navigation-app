@@ -97,7 +97,6 @@ const batteryData = [
     {
         title: "Voltage (V)",
         description: "Voltage (V) indicates the battery's electrical power. Common voltages for e-bikes are 36V, 48V, and 72V. Higher voltage generally translates to more power and higher top speeds, but also affects weight and range. Higher voltage batteries often require more robust motor and controller systems, contributing to increased costs and weight. Some e-bike systems allow for multiple batteries to be connected in series for higher voltages, offering flexibility in balancing power and weight distribution.",
-        image: voltage,
     },
     {
         title: "Capacity (Ah)",
@@ -152,39 +151,44 @@ const capabilitiesData = [
     }
 ]
 
-const powerData = [
+const motorData = [
     {
         title: "Hub Motor",
         description: "Hub motors are located within the front or rear wheel of the e-bike. They are generally more affordable and simpler to install than mid-drive motors. Hub motors offer consistent power delivery and are well-suited for flat terrain and commuting. However, they can affect the weight distribution of the bike and may feel less natural when pedaling on hills.",
-        image: "hubMotor"
     },
     {
         title: "Mid-Drive Motor",
         description: "Mid-drive motors are positioned near the pedals, integrating with the drivetrain of the bike. This provides a more natural riding experience with smoother power delivery and better climbing ability. Mid-drive motors are generally more efficient than hub motors and offer better weight distribution for handling. However, they can be more expensive and require a compatible frame design.",
-        image: "midDriveMotor"
     },
     {
         title: "Motor Power Options",
         description: "E-bike motors come in various power levels, typically measured in watts (W). The ideal power for you depends on your riding style and terrain. Here's a breakdown of the 4 most common options:",
-        image: "motorPower"
     },
+]
+
+const powerData = [
     {
         title: "250W",
-        description: "250W motors are the most common type for low-speed e-bikes (limited to 20-25 mph depending on regulations). They are lightweight, quiet, and efficient for commuting and city riding. However, they may struggle with steeper inclines."
+        description: "250W motors are common for low-speed e-bikes, great for city riding and commuting but may struggle on steep hills."
     },
     {
         title: "500W",
-        description: "500W motors offer a good balance of power and efficiency. They provide significant assistance for climbing hills and navigating moderate off-road trails, while still being suitable for commuting."
+        description: "500W motors offer a balance of power and efficiency, suitable for hills and moderate off-road trails, while still good for commuting."
     },
     {
         title: "750W",
-        description: "750W motors are ideal for riders who tackle steeper hills and require more power. They can offer higher speeds (depending on regulations) and greater assistance on off-road adventures."
+        description: "750W motors are ideal for steeper hills and off-road adventures, providing more power and speed within legal limits."
+    },
+    {
+        title: "1000W",
+        description: "1000W motors provide exceptional power for challenging terrain and higher speeds where permitted, with faster battery drain and higher maintenance requirements."
     },
     {
         title: "1000W+ High-Power Motors",
         description: "For riders seeking maximum power and speed (where permitted by law), 1000W+ motors provide exceptional performance. They can handle very challenging terrain and offer higher top speeds. However, they drain batteries faster, may be heavier, and could have higher maintenance requirements. Regulations around high-power motors can vary by region, so be sure to check local laws."
     }
-]
+];
 
 
-export { data, powerData, capabilitiesData, batteryData, styleData };
+
+export { data, powerData, capabilitiesData, batteryData, styleData, motorData };
