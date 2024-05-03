@@ -3,54 +3,18 @@ import { Text, View, Image, FlatList, TouchableHighlight, ImageBackground } from
 import { Dimensions, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StatusBar } from "expo-status-bar";
-
-const learnHeaderImage = { uri: "https://images.unsplash.com/photo-1627697856513-10a5583bfbaa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
-const stylesHeaderImage = { uri: "https://images.unsplash.com/photo-1622734547816-47e9afe17021?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
-const batteryHeaderImage = { uri: "https://images.unsplash.com/photo-1623982783113-2f2940d3138a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fGVsZWN0cmljJTIwYmlrZXN8ZW58MHwxfDB8fHwy" };
-const exploreImage = { uri: 'https://images.unsplash.com/photo-1631068190477-190717507d2a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAwfHxlbGVjdHJpYyUyMGJpa2VzfGVufDB8MXwwfHx8Mg%3D%3D' };
-const foldingStyle = { uri: "https://images.unsplash.com/photo-1590273018519-ba2db69e124c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWxlY3RyaWMlMjBiaWtlcyUyMGZvbGRpbmd8ZW58MHwxfDB8fHwy" };
-const mtbStyle = { uri: "https://images.unsplash.com/photo-1668106249278-cba50127e361?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBtb3VudGFpbiUyMGJpa2V8ZW58MHwxfDB8fHwy" };
+import { introductionData } from "../components/Data";
 
 const Introduction = ({ navigation }) => {
-    const screenWidth = Dimensions.get('window').width; // Get screen width
+
+
+    const screenWidth = Dimensions.get('window').width;
+    const screenHeight = Dimensions.get('window').height;
 
     const flatListRef = useRef(null);
 
     const [step, setStep] = useState(0);
     const [viewableItems, setViewableItems] = useState([]);
-
-    const data = [
-        {
-            id: 1,
-            title: "Learn E-Bikes",
-            description: "Learn all about e-bikes",
-            image: learnHeaderImage,
-        },
-        {
-            id: 2,
-            title: "Explore Styles",
-            description: "Discover diverse e-bike styles, from moped to foldables.",
-            image: stylesHeaderImage,
-        },
-        {
-            id: 3,
-            title: "Battery and Range",
-            description: "Explore e-bike batteries and their impact on range.",
-            image: batteryHeaderImage,
-        },
-        {
-            id: 4,
-            title: "Exploration",
-            description: "From asphalt to mountains, find the best bike type for you",
-            image: mtbStyle
-        },
-        {
-            id: 5,
-            title: "E-bike World",
-            description: "Explore World!",
-            image: exploreImage,
-        }
-    ];
 
     const setFirstTime = async () => {
         try {
@@ -67,7 +31,9 @@ const Introduction = ({ navigation }) => {
             <View style={[styles.container, { width: screenWidth }]}>
                 <View style={{ width: screenWidth, alignItems: "center", justifyContent: "center, flex: 1" }}>
                     <Text style={styles.title}>{item.title}</Text>
-                    <Image source={item.image} style={styles.image} />
+                    <View style={[{ width: "75%", aspectRatio: 9 / 16 }]}>
+                        <Image source={item.image} style={styles.image} />
+                    </View>
                     {
                         item.id <= 4 ?
                             <Text style={styles.description}>{item.description}</Text>
@@ -106,24 +72,24 @@ const Introduction = ({ navigation }) => {
     };
 
     return (
-        <View style={[styles.container, { width: screenWidth }]}>
+        <View style={[styles.container, { width: screenWidth, minHeight: screenHeight }]}>
             <StatusBar
                 style="light"
                 backgroundColor="#07051d"
             />
             <FlatList
                 ref={flatListRef}
-                data={data}
+                data={introductionData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id.toString()}
                 horizontal={true}
                 centerContent={true}
                 pagingEnabled={true}
-                contentContainerStyle={{ minWidth: screenWidth * data.length }}
+                contentContainerStyle={{ minWidth: screenWidth * introductionData.length }}
                 onViewableItemsChanged={getVisible}
             />
             <View style={styles.multistepContainer}>
-                {data.map((item) => (
+                {introductionData.map((item) => (
                     <TouchableHighlight
                         key={item.id}
                         style={[styles.step, step !== item.id && styles.stepInactive]}
@@ -142,17 +108,17 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        paddingTop: 20,
-        paddingBottom: 20,
+        paddingTop: 26,
+        paddingBottom: 26,
         backgroundColor: "#07051d",
         color: "#000",
     },
     image: {
-        width: "85%",
+        flex: 1,
         aspectRatio: 9 / 16,
         borderRadius: 32,
-        marginTop: 14,
-        marginBottom: 14,
+        marginTop: 16,
+        marginBottom: 16,
     },
     title: {
         width: "100%",
@@ -190,7 +156,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: "#d5f0e1",
         padding: 14,
-        width: "85%",
+        width: "70%",
         alignItems: "center",
         justifyContent: "Center",
         borderRadius: 32,

@@ -1,6 +1,45 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+
+
+const learnHeaderImage = require('../assets/images/introduction/learnHeader.jpg');
+const stylesHeaderImage = require('../assets/images/introduction/stylesHeader.jpg');
+const quizHeaderImage = require('../assets/images/introduction/quizCover.jpg');
+const exploreHeaderImage = require('../assets/images/styles/mtb.jpg');
+const startHeaderImage = require('../assets/images/introduction/startCover.jpg');
+
+const introductionData = [
+    {
+        id: 1,
+        title: "Learn E-Bikes",
+        description: "Learn all about e-bikes",
+        image: learnHeaderImage,
+    },
+    {
+        id: 2,
+        title: "Explore Styles",
+        description: "Discover diverse e-bike styles, from moped to foldables.",
+        image: stylesHeaderImage,
+    },
+    {
+        id: 3,
+        title: "Find Your Bike",
+        description: "Take the quiz and find the best bike for you.",
+        image: quizHeaderImage,
+    },
+    {
+        id: 4,
+        title: "Exploration",
+        description: "From asphalt to mountains, find the best bike type for you",
+        image: exploreHeaderImage,
+    },
+    {
+        id: 5,
+        title: "E-bike World",
+        description: "Explore World!",
+        image: startHeaderImage,
+    }
+];
 
 
 const powerCover = { uri: 'https://images.unsplash.com/photo-1669965691237-e8fea18b09e7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZWJpa2UlMjBiYXR0ZXJ5fGVufDB8MXwwfHx8Mg%3D%3D' };
@@ -191,4 +230,11 @@ const powerData = [
 
 
 
-export { data, powerData, capabilitiesData, batteryData, styleData, motorData };
+export { data, 
+    powerData, 
+    capabilitiesData, 
+    batteryData, 
+    styleData, 
+    motorData,
+    introductionData,
+};

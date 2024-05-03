@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './routes/HomeScreen';
 import Introduction from './routes/Introduction';
 import Explanation from './routes/Explanation';
-import Quiz from './components/Quiz';
+import Quiz from './routes/Quiz';
 
 const Stack = createNativeStackNavigator();
 
