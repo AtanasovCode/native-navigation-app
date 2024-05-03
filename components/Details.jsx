@@ -11,13 +11,10 @@ import CapabilitiesDetails from "./details/CapabilitiesDetails";
 
 const Details = ({ type }) => {
 
-    const getComponent = () => {
-        if(type === "style") return <StyleDetails />
-    }
-
     return (
         <View style={{flex: 1}}>
-            <CapabilitiesDetails />
+            {type === "styles" && <StyleDetails />}
+            {type === "capabilities" && <CapabilitiesDetails />}
         </View>
     );
 }
