@@ -4,6 +4,7 @@ import {
     Image,
     ImageBackground,
     View,
+    Animated,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet } from "react-native";
@@ -21,7 +22,7 @@ const StyleDetails = () => {
     const renderItem = ({ item }) => {
         return (
             <View style={[styles.container, { minHeight: screenHeight }]}>
-                <ImageBackground source={item.image} style={styles.image}>
+                <ImageBackground source={item.image} style={[styles.image]}>
                     <LinearGradient
                         colors={['rgba(0, 0, 0, 0)', '#1a1a1b']}
                         style={styles.gradient}
@@ -39,7 +40,7 @@ const StyleDetails = () => {
     return (
         <View>
             <View style={styles.container}>
-                <Text style={[styles.baseText, styles.title, {marginBottom: 16}]}>
+                <Text style={[styles.baseText, styles.title, { marginBottom: 16 }]}>
                     Different Style, Different Purpose
                 </Text>
                 <Text style={[styles.text, styles.baseText]}>
@@ -53,6 +54,16 @@ const StyleDetails = () => {
                 renderItem={renderItem}
                 keyExtractor={(item, index) => String(index)}
             />
+            <View style={styles.container}>
+                <Text style={[styles.baseText, styles.title, {marginBottom: 16}]}>Conclusion</Text>
+                <Text style={[styles.baseText, styles.text]}>
+                    Electric bikes offer diverse experiences for all riders, from mountains to 
+                    cities, catering to different lifestyles with efficiency. Whether tackling 
+                    trails, commuting, or enjoying family outings, there's a perfect match for 
+                    everyone. With innovation driving convenience, comfort, and sustainability,
+                    electric bikes redefine modern mobility for riders worldwide.
+                </Text>
+            </View>
         </View>
     );
 }
