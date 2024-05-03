@@ -12,7 +12,7 @@ const data = [
     {
         id: 1,
         name: 'E-Bike Styles',
-        icon: <MaterialCommunityIcons name="bike-fast" size={36} color="#ffffff" />,
+        icon: <MaterialCommunityIcons name="bike-fast" size={30} color="#ffffff" />,
         title: "Different Types of E-Bike Styles",
         description: "From foldable to moped style, e-bikes come in all shapes and sizes.",
         uri: styleCover,

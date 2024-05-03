@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './routes/HomeScreen';
 import Introduction from './routes/Introduction';
 import Explanation from './routes/Explanation';
+import Quiz from './components/Quiz';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +51,13 @@ const App = () => {
         <Stack.Screen
           name="Explanation"
           component={Explanation}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="Quiz"
+          component={Quiz}
           options={{
             headerShown: false
           }}

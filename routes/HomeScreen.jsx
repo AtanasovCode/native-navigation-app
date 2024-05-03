@@ -5,6 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { data } from '../components/Data';
 const background = { uri: 'https://images.unsplash.com/photo-1620984721051-36dafb139faa?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' };
 
+import { MaterialIcons } from '@expo/vector-icons';
+
 const HomeScreen = ({ navigation }) => {
 
     const renderItem = ({ item }) => {
@@ -44,6 +46,25 @@ const HomeScreen = ({ navigation }) => {
                     locations={[0.655, 1]}
                 />
             </ImageBackground>
+            <View style={styles.wrapper}>
+                <Text style={[styles.title, {marginBottom: 8}]}>Take the Quiz</Text>
+                <Text style={[renderStyles.baseText, {marginBottom: 16}]}>
+                    Find out which E-bike is best for you
+                </Text>
+                <TouchableHighlight
+                    style={{ alignItems: "center", justifyContent: "center" }}
+                    onPress={() => navigation.navigate("Quiz")}
+                >
+                    <View style={renderStyles.container}>
+                        <View style={renderStyles.iconWrapper}>
+                            <MaterialIcons name="quiz" size={36} color="#fff" />
+                        </View>
+                        <Text style={[renderStyles.baseText, renderStyles.title]}>
+                            Start Quiz
+                        </Text>
+                    </View>
+                </TouchableHighlight>
+            </View>
             <View style={styles.wrapper}>
                 <StatusBar
                     barStyle="dark-content"
@@ -120,8 +141,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: "#fff",
-        fontSize: 36,
-        fontWeight: "900",
+        fontSize: 22,
+        fontWeight: "700",
         marginBottom: 26,
         textAlign: "center",
     },
