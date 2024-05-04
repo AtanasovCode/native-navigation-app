@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef, } from "react";
 import {
     View,
     Text,
@@ -17,12 +17,53 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
-const Quiz = () => {
+const Quiz = ({navigation}) => {
 
     const width = Dimensions.get("window").width;
     const height = Dimensions.get("window").height;
 
-    const [currentQuestion, setCurrentQuestion] = useState(1);
+    const flatListRef = useRef(null);
+
+    const [step, setStep] = useState(1);
+    const [viewableItems, setViewableItems] = useState([]);
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
+
+
+    const getVisible = (viewableItems) => {
+        const visibleItemIds = viewableItems.viewableItems.map((item) => item.item.id);
+        setViewableItems(visibleItemIds);
+    };
+
+    useEffect(() => {
+        if (viewableItems.length > 0) {
+            setStep(viewableItems[0]); // Assuming the first visible item is relevant
+        }
+    }, [viewableItems])
+
+    const handleStepPress = (id) => {
+        setStep(id);
+        flatListRef.current.scrollToIndex({ index: id - 1 }); // Adjust index to zero-based
+    };
+
+    const handleSelectAnswer = (id, value, answerID) => {
+        // Check if answer for answerID already exists in selectedAnswers
+        const existingAnswerIndex = selectedAnswers.findIndex(answer => answer.answerID === answerID);
+
+        // If answer exists, replace it with new answer; otherwise, add new answer
+        if (existingAnswerIndex !== -1) {
+            const updatedAnswers = [...selectedAnswers];
+            updatedAnswers[existingAnswerIndex] = { answerID, id, value };
+            setSelectedAnswers(updatedAnswers);
+        } else {
+            setSelectedAnswers(prevAnswers => [...prevAnswers, { answerID, id, value }]);
+        }
+    }
+
+
+
+    useEffect(() => {
+        if(selectedAnswers.length === 7) navigation.navigate("Result")
+    }, [selectedAnswers])
 
     const renderItem = ({ item }) => {
         return (
@@ -47,7 +88,17 @@ const Quiz = () => {
                     >
                         {item.answers.map((answer) => {
                             return (
-                                <TouchableHighlight key={(answer.value)} style={[styles.answer]}>
+                                <TouchableHighlight
+                                    key={(answer.id)}
+                                    style={[
+                                        styles.answer,
+                                        selectedAnswers.find((ans) => ans.answerID === item.id && ans.id === answer.id) && styles.selectedAnswer
+                                    ]}
+                                    onPress={() => {
+                                        handleSelectAnswer(answer.id, answer.value, item.id)
+                                        item.id < quizData.length && handleStepPress(item.id + 1)
+                                    }}
+                                >
                                     <Text style={[styles.baseText, styles.answerText]}>
                                         {answer.answer}
                                     </Text>
@@ -69,7 +120,20 @@ const Quiz = () => {
                 keyExtractor={(item) => String(item.id)}
                 horizontal={true}
                 pagingEnabled={true}
+                ref={flatListRef}
+                onViewableItemsChanged={getVisible}
             />
+            <View style={styles.multistepContainer}>
+                {quizData.map((item) => (
+                    <TouchableHighlight
+                        key={item.id}
+                        style={[styles.step, step !== item.id && styles.stepInactive]}
+                        onPress={() => handleStepPress(item.id)}
+                    >
+                        <Text></Text>
+                    </TouchableHighlight>
+                ))}
+            </View>
         </SafeAreaView>
     );
 }
@@ -105,6 +169,9 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         padding: 16,
     },
+    selectedAnswer: {
+        backgroundColor: "#0080ff"
+    },
     answerText: {
         fontSize: 17,
         textAlign: "center",
@@ -124,6 +191,31 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
         justifyContent: "flex-end",
+    },
+    buttonContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    multistepContainer: {
+        width: "100%",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 15,
+        marginTop: 22,
+        marginBottom: 22,
+    },
+    step: {
+        borderRadius: 50,
+        width: 15,
+        height: 15,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+        aspectRatio: 1,
+    },
+    stepInactive: {
+        opacity: .4,
     },
 })
 

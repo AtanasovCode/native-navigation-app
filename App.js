@@ -9,6 +9,7 @@ import HomeScreen from './routes/HomeScreen';
 import Introduction from './routes/Introduction';
 import Explanation from './routes/Explanation';
 import Quiz from './routes/Quiz';
+import Result from './routes/Result';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,6 +59,13 @@ const App = () => {
         <Stack.Screen
           name="Quiz"
           component={Quiz}
+          options={{
+            headerShown: false
+          }}
+        />
+                <Stack.Screen
+          name="Result"
+          component={Result}
           options={{
             headerShown: false
           }}

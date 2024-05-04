@@ -229,14 +229,13 @@ const powerData = [
 ];
 
 
-const image1  = require('../assets/images/quiz/1.jpg')
-const image2  = require('../assets/images/quiz/2.jpg')
-const image3  = require('../assets/images/quiz/3.jpg')
-const image4  = require('../assets/images/quiz/4.jpg')
-const image5  = require('../assets/images/quiz/5.jpg')
-const image6  = require('../assets/images/quiz/6.jpg')
-const image7  = require('../assets/images/quiz/7.jpg')
-
+const image1 = require('../assets/images/quiz/1.jpg')
+const image2 = require('../assets/images/quiz/2.jpg')
+const image3 = require('../assets/images/quiz/3.jpg')
+const image4 = require('../assets/images/quiz/4.jpg')
+const image5 = require('../assets/images/quiz/5.jpg')
+const image6 = require('../assets/images/quiz/6.jpg')
+const image7 = require('../assets/images/quiz/7.jpg')
 
 
 const quizData = [
@@ -245,9 +244,21 @@ const quizData = [
         image: image1,
         question: "What type of terrain will you be riding your e-bike on most often?",
         answers: [
-            { answer: "City streets and paved paths", value: "commuter" },
-            { answer: "Dirt trails and light off-road", value: "hybrid" },
-            { answer: "Mountainous terrain and rough roads", value: "mountain" },
+            {
+                answer: "City streets and paved paths",
+                value: "commuter",
+                id: 1
+            },
+            {
+                answer: "Dirt trails and light off-road",
+                value: "hybrid",
+                id: 2
+            },
+            {
+                answer: "Mountainous terrain and rough roads",
+                value: "mountain",
+                id: 3
+            },
         ],
     },
     {
@@ -255,9 +266,21 @@ const quizData = [
         image: image2,
         question: "How important is range (distance on a single charge) to you?",
         answers: [
-            { answer: "Very important, I want to ride long distances (30+ miles)", value: "long-range" },
-            { answer: "Somewhat important, comfortable rides of 15-30 miles are ideal", value: "balanced" },
-            { answer: "Not that important, I'll mostly be riding short distances (under 15 miles)", value: "standard" },
+            {
+                answer: "Very important, I want to ride long distances (30+ miles)",
+                value: "long-range",
+                id: 1
+            },
+            {
+                answer: "Somewhat important, comfortable rides of 15-30 miles are ideal",
+                value: "balanced",
+                id: 2
+            },
+            {
+                answer: "Not that important, I'll mostly be riding short distances (under 15 miles)",
+                value: "standard",
+                id: 3
+            },
         ],
     },
     {
@@ -265,9 +288,21 @@ const quizData = [
         image: image3,
         question: "What level of physical exertion are you looking for when riding?",
         answers: [
-            { answer: "Minimal effort, I want the motor to do most of the work", value: "high-power" },
-            { answer: "A balance of exercise and motor assistance", value: "balanced" },
-            { answer: "I want a good workout and will use the motor for support", value: "low-power" },
+            {
+                answer: "Minimal effort, I want the motor to do most of the work",
+                value: "high-power",
+                id: 1
+            },
+            {
+                answer: "A balance of exercise and motor assistance",
+                value: "balanced",
+                id: 2
+            },
+            {
+                answer: "I want a good workout and will use the motor for support",
+                value: "low-power",
+                id: 3
+            },
         ],
     },
     {
@@ -275,9 +310,21 @@ const quizData = [
         image: image4,
         question: "How important is folding capability for storage or transportation?",
         answers: [
-            { answer: "Very important, I need to store it easily in my apartment", value: "folding" },
-            { answer: "Somewhat important, but not a dealbreaker", value: "balanced" },
-            { answer: "Not important, I have dedicated storage space", value: "non-folding" },
+            {
+                answer: "Very important, I need to store it easily in my apartment",
+                value: "folding",
+                id: 1
+            },
+            {
+                answer: "Somewhat important, but not a dealbreaker",
+                value: "balanced",
+                id: 2
+            },
+            {
+                answer: "Not important, I have dedicated storage space",
+                value: "non-folding",
+                id: 3
+            },
         ],
     },
     {
@@ -285,20 +332,43 @@ const quizData = [
         image: image5,
         question: "Do you plan to carry any cargo (groceries, bags, etc.) on your e-bike?",
         answers: [
-            { answer: "Yes, I often need to carry cargo", value: "cargo" },
-            { answer: "Occasionally, but not a major priority", value: "balanced" },
-            { answer: "No, I won't be carrying any cargo", value: "lightweight" },
+            {
+                answer: "Yes, I often need to carry cargo",
+                value: "cargo",
+                id: 1
+            },
+            {
+                answer: "Occasionally, but not a major priority",
+                value: "balanced",
+                id: 2
+            },
+            {
+                answer: "No, I won't be carrying any cargo",
+                value: "lightweight",
+                id: 3
+            },
         ],
     },
     {
         id: 6,
         image: image6,
-        question: "What riding position do you prefer (upright, sporty, or comfort-focused)?",
+        question: "What riding position do you prefer?",
         answers: [
-            { answer: "Upright position for better visibility and comfort", value: "upright" },
-            { answer: "Sportier, forward-leaning position for efficiency", value: "sporty" },
-            { answer: "Comfort-focused with a relaxed, upright posture", value: "comfort" },
-            
+            {
+                answer: "Upright position for better visibility and comfort",
+                value: "upright",
+                id: 1
+            },
+            {
+                answer: "Sportier, forward-leaning position for efficiency",
+                value: "sporty",
+                id: 2
+            },
+            {
+                answer: "Comfort-focused with a relaxed, upright posture",
+                value: "comfort",
+                id: 3
+            },
         ],
     },
     {
@@ -306,12 +376,25 @@ const quizData = [
         image: image7,
         question: "What is your budget for an electric bike?",
         answers: [
-            { answer: "No budget limit, I want the best features", value: "premium" },
-            { answer: "I'm looking for a good value for the price", value: "balanced" },
-            { answer: "I need to find an affordable option", value: "budget" },
+            {
+                answer: "No budget limit, I want the best features",
+                value: "premium",
+                id: 1
+            },
+            {
+                answer: "I'm looking for a good value for the price",
+                value: "balanced",
+                id: 2
+            },
+            {
+                answer: "I need to find an affordable option",
+                value: "budget",
+                id: 3
+            },
         ],
     },
 ];
+
 
 
 export {
