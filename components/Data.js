@@ -229,12 +229,6 @@ const powerData = [
 ];
 
 
-
-function generateRandomHexId() {
-    return Math.random().toString(16).substring(2);
-}
-
-
 const image1  = require('../assets/images/quiz/1.jpg')
 const image2  = require('../assets/images/quiz/2.jpg')
 const image3  = require('../assets/images/quiz/3.jpg')
@@ -247,7 +241,7 @@ const image7  = require('../assets/images/quiz/7.jpg')
 
 const quizData = [
     {
-        id: generateRandomHexId(),
+        id: 1,
         image: image1,
         question: "What type of terrain will you be riding your e-bike on most often?",
         answers: [
@@ -257,7 +251,7 @@ const quizData = [
         ],
     },
     {
-        id: generateRandomHexId(),
+        id: 2,
         image: image2,
         question: "How important is range (distance on a single charge) to you?",
         answers: [
@@ -267,7 +261,7 @@ const quizData = [
         ],
     },
     {
-        id: generateRandomHexId(),
+        id: 3,
         image: image3,
         question: "What level of physical exertion are you looking for when riding?",
         answers: [
@@ -277,7 +271,7 @@ const quizData = [
         ],
     },
     {
-        id: generateRandomHexId(),
+        id: 4,
         image: image4,
         question: "How important is folding capability for storage or transportation?",
         answers: [
@@ -287,7 +281,7 @@ const quizData = [
         ],
     },
     {
-        id: generateRandomHexId(),
+        id: 5,
         image: image5,
         question: "Do you plan to carry any cargo (groceries, bags, etc.) on your e-bike?",
         answers: [
@@ -297,17 +291,18 @@ const quizData = [
         ],
     },
     {
-        id: generateRandomHexId(),
+        id: 6,
         image: image6,
         question: "What riding position do you prefer (upright, sporty, or comfort-focused)?",
         answers: [
             { answer: "Upright position for better visibility and comfort", value: "upright" },
             { answer: "Sportier, forward-leaning position for efficiency", value: "sporty" },
             { answer: "Comfort-focused with a relaxed, upright posture", value: "comfort" },
+            
         ],
     },
     {
-        id: generateRandomHexId(),
+        id: 7,
         image: image7,
         question: "What is your budget for an electric bike?",
         answers: [

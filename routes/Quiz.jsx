@@ -1,13 +1,19 @@
+import React from "react";
+import { useState } from "react";
 import {
     View,
     Text,
     FlatList,
     Image,
     Dimensions,
+    TouchableHighlight,
+    ScrollView,
 } from "react-native";
 import { StyleSheet } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { quizData } from "../components/Data";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
@@ -15,6 +21,8 @@ const Quiz = () => {
 
     const width = Dimensions.get("window").width;
     const height = Dimensions.get("window").height;
+
+    const [currentQuestion, setCurrentQuestion] = useState(1);
 
     const renderItem = ({ item }) => {
         return (
@@ -30,26 +38,31 @@ const Quiz = () => {
                         locations={[0.655, 1]}
                     />
                 </View>
-                <Text style={[styles.baseText, styles.title]}>
-                    {item.question}
-                </Text>
-                <View style={styles.answerWrapper}>
-                    {item.answers.map((answer) => {
-                        return (
-                            <View style={[styles.answer]}>
-                                <Text style={[styles.baseText, styles.answerText]}>
-                                    {answer.answer}
-                                </Text>
-                            </View>
-                        );
-                    })}
-                </View>
+                <ScrollView>
+                    <Text style={[styles.baseText, styles.title]}>
+                        {item.question}
+                    </Text>
+                    <View
+                        style={styles.answerWrapper}
+                    >
+                        {item.answers.map((answer) => {
+                            return (
+                                <TouchableHighlight key={(answer.value)} style={[styles.answer]}>
+                                    <Text style={[styles.baseText, styles.answerText]}>
+                                        {answer.answer}
+                                    </Text>
+                                </TouchableHighlight>
+                            );
+                        })}
+                    </View>
+                </ScrollView>
             </View>
         );
     }
 
     return (
-        <View style={[styles.container, { minWidth: width, minHeight: height }]}>
+        <SafeAreaView style={[styles.container, { minWidth: width, minHeight: height }]}>
+            <StatusBar style="light" />
             <FlatList
                 data={quizData}
                 renderItem={renderItem}
@@ -57,7 +70,7 @@ const Quiz = () => {
                 horizontal={true}
                 pagingEnabled={true}
             />
-        </View>
+        </SafeAreaView>
     );
 }
 
