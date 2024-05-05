@@ -88,36 +88,42 @@ const fatTire = require('../assets/images/styles/fatTire.jpg');
 const styleData = [
     {
         title: "Mountain E-Bike",
+        value: "mountain",
         description: "Built for conquering tough terrain, E-MTBs boast sturdy suspension systems, wide knobby tires for gripping loose surfaces, and powerful motors to tackle steep climbs. They often have lower handlebars for a more aggressive riding posture.",
         usefulFor: "Off-road adventures, tackling trails, mountain biking enthusiasts, riders who want a challenge with an extra boost.",
         image: mtb,
     },
     {
         title: "City E-Bike",
+        value: "city",
         description: "Designed for comfort and practicality in urban environments, city e-bikes prioritize a relaxed, upright riding position. They commonly feature fenders, a chain guard, a rack for bags, and puncture-resistant tires.",
         usefulFor: "Commuting, running errands, casual riding on paved paths, riders who value comfort and practicality.",
         image: city,
     },
     {
         title: "Folding E-Bikes",
+        value: "folding",
         description: "These champions of convenience fold compactly for easy storage and portability. Perfect for urban dwellers with limited space or those who combine cycling with public transportation. Folding e-bikes typically have smaller wheels for a more compact size when folded.",
         usefulFor: "Short commutes, apartment living, combining cycling with public transport, riders who prioritize easy storage and portability.",
         image: fold,
     },
     {
         title: "Moped-Style E-Bikes",
+        value: "moped",
         description: "Offering a motorcycle-like look with a step-through frame, pedals, and a comfortable motorbike-style seat, moped e-bikes often have powerful motors and larger batteries for extended range. They prioritize cruising comfort and a more upright riding position.",
         usefulFor: "Cruising around town, leisure riding, riders who prefer a moped aesthetic and comfortable seating.",
         image: moped,
     },
     {
         title: "Fat Tire E-Bike",
+        value: "fatTire",
         description: "These feature super-wide tires that provide exceptional stability and traction on challenging terrains like sand, snow, or mud. Fat tires also offer a smoother ride due to their increased natural suspension.",
         usefulFor: " Riding on loose surfaces (sand, snow, mud), beach cruising, riders who prioritize stability and a comfortable ride on uneven terrain.",
         image: fatTire,
     },
     {
         title: "Cargo E-Bike",
+        value: "cargo",
         description: "Built to haul heavy loads, cargo e-bikes boast longtail frames or large front/rear baskets for carrying groceries, kids, or other cargo. They are a great alternative to car trips for errands or family outings, offering significant cargo capacity.",
         usefulFor: "Replacing car trips for errands and hauling cargo, active families, businesses making deliveries.",
         image: cargo,
@@ -246,12 +252,12 @@ const quizData = [
         answers: [
             {
                 answer: "City streets and paved paths",
-                value: "commuter",
+                value: "city",
                 id: 1
             },
             {
                 answer: "Dirt trails and light off-road",
-                value: "hybrid",
+                value: "offRoad",
                 id: 2
             },
             {
@@ -273,12 +279,12 @@ const quizData = [
             },
             {
                 answer: "Somewhat important, comfortable rides of 15-30 miles are ideal",
-                value: "balanced",
+                value: "medium-range",
                 id: 2
             },
             {
                 answer: "Not that important, I'll mostly be riding short distances (under 15 miles)",
-                value: "standard",
+                value: "short-range",
                 id: 3
             },
         ],
@@ -295,7 +301,7 @@ const quizData = [
             },
             {
                 answer: "A balance of exercise and motor assistance",
-                value: "balanced",
+                value: "balanced-power",
                 id: 2
             },
             {
@@ -316,14 +322,9 @@ const quizData = [
                 id: 1
             },
             {
-                answer: "Somewhat important, but not a dealbreaker",
-                value: "balanced",
-                id: 2
-            },
-            {
-                answer: "Not important, I have dedicated storage space",
+                answer: "Not important, I have the storage space",
                 value: "non-folding",
-                id: 3
+                id: 2
             },
         ],
     },
@@ -367,28 +368,6 @@ const quizData = [
             {
                 answer: "Comfort-focused with a relaxed, upright posture",
                 value: "comfort",
-                id: 3
-            },
-        ],
-    },
-    {
-        id: 7,
-        image: image7,
-        question: "What is your budget for an electric bike?",
-        answers: [
-            {
-                answer: "No budget limit, I want the best features",
-                value: "premium",
-                id: 1
-            },
-            {
-                answer: "I'm looking for a good value for the price",
-                value: "balanced",
-                id: 2
-            },
-            {
-                answer: "I need to find an affordable option",
-                value: "budget",
                 id: 3
             },
         ],

@@ -17,7 +17,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
-const Quiz = ({navigation}) => {
+const Quiz = ({ navigation }) => {
 
     const width = Dimensions.get("window").width;
     const height = Dimensions.get("window").height;
@@ -27,6 +27,7 @@ const Quiz = ({navigation}) => {
     const [step, setStep] = useState(1);
     const [viewableItems, setViewableItems] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState([]);
+    const [result, setResult] = useState();
 
 
     const getVisible = (viewableItems) => {
@@ -60,10 +61,69 @@ const Quiz = ({navigation}) => {
     }
 
 
+    const calculateBikeType = (answers) => {
+        // Define criteria for each bike type
+        const criteria = {
+            city: ["city", "long-range", "medium-range", "balanced-power", "non-folding", "cargo", "upright", "comfort"],
+            folding: ["city", "medium-range", "short-range", "balanced-power", "low-power", "folding", "lightweight", "upright", "comfort",],
+            mountain: ["offRoad", "mountain", "medium-range", "balanced-power", "low-power", "non-folding", "lightweight", "balanced", "sporty"],
+            moped: ["city", "long-range", "medium-range", "high-power", "non-folding", "balanced", "upright", "sporty", "premium", "balanced-budget"],
+            cargo: ["city", "long-range", "medium-range", "high-power", "balanced-power", "non-folding", "cargo", "upright", "comfort",],
+            fatTire: ["offRoad", "mountain", "medium-range", "high-power", "balanced-power", "non-folding", "cargo", "balanced", "sporty", "comfort"],
+        };
+
+        // Adjust weights for specific options
+        const weights = {
+            "folding": 4,
+            "cargo": 3,
+            "long-range": 2,
+            "medium-range": 2,
+            "short-range": 2,
+            "premium": 2,
+            "high-power": 2,
+        };
+
+        // Initialize scores for each bike type
+        const scores = {
+            city: 0,
+            folding: 0,
+            mountain: 0,
+            moped: 0,
+            cargo: 0,
+            fatTire: 0,
+        };
+
+        // Iterate through user's answers and update scores based on criteria and weights
+        answers.forEach(answer => {
+            for (const type in criteria) {
+                if (criteria[type].includes(answer.value)) {
+                    scores[type] += weights[answer.value] || 1; // Add weight if specified, otherwise default to 1
+                }
+            }
+        });
+
+        // Find the bike type with the highest score
+        let maxScore = 0;
+        let bestBikeType = "";
+        for (const type in scores) {
+            if (scores[type] > maxScore) {
+                maxScore = scores[type];
+                bestBikeType = type;
+            }
+        }
+
+        return bestBikeType;
+    };
 
     useEffect(() => {
-        if(selectedAnswers.length === 7) navigation.navigate("Result")
-    }, [selectedAnswers])
+        if(selectedAnswers.length === quizData.length) {
+            setResult(calculateBikeType(selectedAnswers))
+        }
+
+        if(result) {
+            navigation.navigate("Result", {result})
+        }
+    }, [selectedAnswers, result])
 
     const renderItem = ({ item }) => {
         return (
