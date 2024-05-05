@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={isFirstTime === "true" ? "Introduction" : "Home"}>
+      <Stack.Navigator initialRouteName={"Quiz"/*isFirstTime === "true" ? "Introduction" : "Home"*/}>
         <Stack.Screen
           name="Introduction"
           component={Introduction}

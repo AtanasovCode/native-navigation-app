@@ -30,32 +30,33 @@ const Result = ({ navigation, route }) => {
     }, []);
 
     return (
-        <SafeAreaView style={[styles.container, { minHeight: height }]}>
+        <SafeAreaView style={[styles.container, { height: height, minHeight: height }]}>
             {
                 result && result.map((item) => {
                     return (
-                        <View style={[styles.wrapper]}>
-                            <View style={[styles.imageContainer]}>
-                                <TouchableHighlight 
+                        <ScrollView key={item.id} style={[styles.wrapper, { maxHeight: height }]}>
+                            <View style={[styles.imageContainer, { width: width }]}>
+                                <TouchableHighlight
                                     style={[styles.button]}
                                     onPress={() => navigation.navigate("Home")}
                                 >
                                     <MaterialCommunityIcons name="home-variant" size={24} color="#fff" />
                                 </TouchableHighlight>
-                                <Image source={item.image} style={[styles.image, { width: width }]} />
+                                <Image source={item.image} style={[styles.image, { width: width, height: height * 0.6 }]} />
                                 <LinearGradient
                                     colors={['rgba(0, 0, 0, 0)', '#1a1a1b']}
                                     style={styles.gradient}
                                     locations={[0.55, 1]}
                                 />
                             </View>
-                            <ScrollView style={[styles.textContainer]}>
+
+                            <View style={[styles.textContainer]}>
                                 <Text style={[styles.title, styles.baseText]}>{item.title}</Text>
                                 <Text style={[styles.baseText, styles.text]}>{item.description}</Text>
                                 {item.usefulFor && <Text style={[styles.baseText, styles.subTitle]}>Useful For</Text>}
                                 <Text style={[styles.baseText, styles.text]}>{item.usefulFor}</Text>
-                            </ScrollView>
-                        </View>
+                            </View>
+                        </ScrollView>
                     );
                 })
             }
@@ -69,13 +70,14 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     wrapper: {
-        flex: 1,
     },
     textContainer: {
         flex: 1,
+        paddingBottom: 25,
     },
     imageContainer: {
-        flex: 1.5,
+        height: "60%",
+        maxHeight: "60%",
         position: "relative",
     },
     title: {
