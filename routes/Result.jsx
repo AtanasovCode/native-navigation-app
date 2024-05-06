@@ -34,7 +34,7 @@ const Result = ({ navigation, route }) => {
             {
                 result && result.map((item) => {
                     return (
-                        <ScrollView key={item.id} style={[styles.wrapper, { maxHeight: height }]}>
+                        <ScrollView key={item.value} style={[styles.wrapper, { maxHeight: height }]}>
                             <View style={[styles.imageContainer, { width: width }]}>
                                 <TouchableHighlight
                                     style={[styles.button]}
@@ -76,8 +76,6 @@ const styles = StyleSheet.create({
         paddingBottom: 25,
     },
     imageContainer: {
-        height: "60%",
-        maxHeight: "60%",
         position: "relative",
     },
     title: {
@@ -109,8 +107,6 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
         justifyContent: "flex-end",
-    },
-    buttonContainer: {
     },
     button: {
         position: "absolute",

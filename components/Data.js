@@ -30,7 +30,7 @@ const introductionData = [
     {
         id: 4,
         title: "Exploration",
-        description: "From asphalt to mountains, find the best bike type for you",
+        description: "From asphalt to mountains, e-bikes can conquer it all",
         image: exploreHeaderImage,
     },
     {

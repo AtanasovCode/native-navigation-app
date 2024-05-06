@@ -17,24 +17,24 @@ const App = () => {
 
   const [isFirstTime, setIsFirstTime] = useState("true");
 
-  useEffect(() => {
-    const checkFirstTime = async () => {
-      try {
-        const value = await AsyncStorage.getItem('isFirstTime');
-        if (value !== null) {
-          setIsFirstTime(false);
-        }
-      } catch (error) {
-        console.error('Error reading AsyncStorage:', error);
+  const checkFirstTime = async () => {
+    try {
+      const value = await AsyncStorage.getItem('isFirstTime');
+      if (value !== null) {
+        setIsFirstTime("false");
       }
+    } catch (error) {
+      console.error('Error reading AsyncStorage:', error);
     }
+  }
 
+  useEffect(() => {
     checkFirstTime();
   }, []);
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={"Quiz"/*isFirstTime === "true" ? "Introduction" : "Home"*/}>
+      <Stack.Navigator initialRouteName={isFirstTime === "true" ? "Introduction" : "Home"}>
         <Stack.Screen
           name="Introduction"
           component={Introduction}
@@ -63,7 +63,7 @@ const App = () => {
             headerShown: false
           }}
         />
-                <Stack.Screen
+        <Stack.Screen
           name="Result"
           component={Result}
           options={{
